@@ -1,0 +1,34 @@
+{
+  "name": "Tailscale",
+  "package": "cloud.lazycat.app.tailscale",
+  "description": "将您的设备和用户连接到您专属的安全虚拟专用网络。",
+  "homepage": "https://tailscale.com",
+  "author": "tailscale",
+  "app_features": [
+    "background_task",
+    "public_path"
+  ],
+  "subdomain": "tailscale",
+  "version": "1.81.140",
+  "public_paths": [
+    "/"
+  ],
+  "iconPath": "icon.png",
+  "composePath": "docker-compose.yml",
+  "unsupported_platforms": [],
+  "lastRouteType": "from_compose",
+  "port_mappings": {
+    "tailscale_5252_5252": {
+      "use": true,
+      "type": "http",
+      "path": "/",
+      "targetPath": "/"
+    }
+  },
+  "image_tailscale_tailscale": {
+    "originalImage": "tailscale/tailscale",
+    "pushTarget": "none"
+  },
+  "tailscale_volume_/var/lib_action": "useContent",
+  "tailscale_volume_/dev/net/tun_action": "ignore"
+}

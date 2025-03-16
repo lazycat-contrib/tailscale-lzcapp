@@ -1,0 +1,45 @@
+lzc-sdk-version: "0.1"
+name: Tailscale
+package: cloud.lazycat.app.tailscale
+version: 1.80.3
+description: 将您的设备和用户连接到您专属的安全虚拟专用网络。
+homepage: https://tailscale.com
+author: tailscale
+application:
+  subdomain: tailscale
+  background_task: true
+  multi_instance: false
+  gpu_accel: false
+  kvm_accel: false
+  usb_accel: false
+  public_path:
+    - /
+  routes:
+    - /=http://localhost:8088
+
+services:
+  tailscale:
+    container_name: tailscale
+    image: docker.hlmirror.com/tailscale/tailscale:stable
+    environment:
+      - TS_STATE_DIR=/var/lib/tailscale
+      - TS_EXTRA_ARGS=--accept-routes --accept-dns=false
+      - TS_USERSPACE=false
+    entrypoint: ""
+    command: |
+            sh -c '
+            tailscaled --verbose=1 &
+            sleep 5
+            echo "Web client enabled..."
+            tailscale web 
+            echo "tailscale up..."
+            '
+    binds:
+      - /lzcapp/var/data:/var/lib
+    network_mode: host
+    net_admin: true
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - tailscale status --peers=false --json | grep -q 'Online.*true'
+      start_period: 90s
