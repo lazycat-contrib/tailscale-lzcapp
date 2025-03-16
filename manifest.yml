@@ -15,7 +15,7 @@ application:
   public_path:
     - /
   routes:
-    - /=http://localhost:8088
+    - /=http://host.docker.internal:59527
 
 services:
   tailscale:
@@ -31,7 +31,7 @@ services:
             tailscaled --verbose=1 &
             sleep 5
             echo "Web client enabled..."
-            tailscale web 
+            tailscale web --listen=0.0.0.0:59527
             echo "tailscale up..."
             '
     binds:
