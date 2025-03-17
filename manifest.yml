@@ -15,7 +15,7 @@ application:
   public_path:
     - /
   routes:
-    - /=http://host.docker.internal:59527
+    - /=http://host.lzcapp:59527
 
 services:
   tailscale:
@@ -27,13 +27,13 @@ services:
       - TS_USERSPACE=false
     entrypoint: ""
     command: |
-            sh -c '
-            tailscaled --verbose=1 &
-            sleep 5
-            echo "Web client enabled..."
-            tailscale web --listen=0.0.0.0:59527
-            echo "tailscale up..."
-            '
+      sh -c '
+      tailscaled --verbose=1 &
+      sleep 5
+      echo "Web client enabled..."
+      tailscale web --listen=0.0.0.0:59527
+      echo "tailscale up..."
+      '
     binds:
       - /lzcapp/var/data:/var/lib
     network_mode: host
