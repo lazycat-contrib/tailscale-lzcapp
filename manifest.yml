@@ -17,6 +17,7 @@ application:
   routes:
     - /=http://host.lzcapp:59527
 
+
 services:
   tailscale:
     container_name: tailscale
@@ -43,3 +44,7 @@ services:
         - CMD-SHELL
         - tailscale status --peers=false --json | grep -q 'Online.*true'
       start_period: 90s
+
+ext_config:
+  remove_this_request_headers:
+    - origin
