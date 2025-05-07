@@ -23,13 +23,22 @@ services:
     image: docker.hlmirror.com/tailscale/tailscale:v1.82.5
     environment:
       - TS_STATE_DIR=/var/lib/tailscale
-      - TS_EXTRA_ARGS=--accept-routes --accept-dns=false
+      - TS_EXTRA_ARGS=--accept-routes --advertise-exit-node --accept-dns=false 
       - TS_USERSPACE=false
     entrypoint: ""
     command: |
       sh -c '
       tailscaled --verbose=1 &
       sleep 5
+      echo "check advertise-routes"
+      if [ -s /var/lib/advertise-routes.yaml ]; then  
+        routes=$(cat /var/lib/advertise-routes.yaml)
+        echo "advertise router $routes"
+        tailscale set --advertise-routes="$routes" || echo "Failed to advertise $routes"
+      else
+        echo "creating advertise routes config,you can add your sub-routers eg:192.168.1.0/24,172.10.1.0/24"
+        touch /var/lib/advertise-routes.yaml
+      fi
       echo "Web client enabled..."
       tailscale web --listen=0.0.0.0:59527
       echo "tailscale up..."
