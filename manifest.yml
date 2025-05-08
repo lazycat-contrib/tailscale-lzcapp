@@ -26,16 +26,7 @@ services:
       - TS_EXTRA_ARGS=--accept-routes --advertise-exit-node --accept-dns=true 
       - TS_USERSPACE=false
     entrypoint: ""
-    command: |
-      sh -c '
-      tailscaled --verbose=1 &
-      sleep 5
-      echo "apply options"
-      tailscale set --accept-routes 
-      echo "Web client enabled..."
-      tailscale web --listen=0.0.0.0:59527
-      echo "tailscale up..."
-      '
+    command: /lzcapp/pkg/content/run.sh
     binds:
       - /lzcapp/var/data:/var/lib
     network_mode: host
