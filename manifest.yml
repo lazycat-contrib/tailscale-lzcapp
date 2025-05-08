@@ -23,7 +23,7 @@ services:
     image: docker.1ms.run/tailscale/tailscale:v1.82.5
     environment:
       - TS_STATE_DIR=/var/lib/tailscale
-      - TS_EXTRA_ARGS=--accept-routes --advertise-exit-node --accept-dns=false 
+      - TS_EXTRA_ARGS=--accept-routes --advertise-exit-node --accept-dns=true 
       - TS_USERSPACE=false
     entrypoint: ""
     command: |
@@ -31,7 +31,7 @@ services:
       tailscaled --verbose=1 &
       sleep 5
       echo "apply options"
-      tailscale set --accept-routes --advertise-exit-node
+      tailscale set --accept-routes 
       echo "Web client enabled..."
       tailscale web --listen=0.0.0.0:59527
       echo "tailscale up..."
