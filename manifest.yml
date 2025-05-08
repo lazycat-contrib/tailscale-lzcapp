@@ -30,6 +30,8 @@ services:
       sh -c '
       tailscaled --verbose=1 &
       sleep 5
+      echo "apply options"
+      tailscale set --accept-routes --advertise-exit-node
       echo "Web client enabled..."
       tailscale web --listen=0.0.0.0:59527
       echo "tailscale up..."
