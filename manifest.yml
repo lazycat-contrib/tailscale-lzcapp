@@ -1,7 +1,7 @@
 lzc-sdk-version: "0.1"
 name: Tailscale
 package: cloud.lazycat.app.tailscale
-version: 1.82.5
+version: 1.84.0
 description: 将您的设备和用户连接到您专属的安全虚拟专用网络。
 homepage: https://tailscale.com
 author: tailscale
@@ -20,7 +20,7 @@ application:
 services:
   tailscale:
     container_name: tailscale
-    image: docker.1ms.run/tailscale/tailscale:v1.82.5
+    image: registry.lazycat.cloud/czyt/tailscale/tailscale:c95ca3f07d1ab24e
     environment:
       - TS_STATE_DIR=/var/lib/tailscale
       - TS_EXTRA_ARGS=--accept-routes --advertise-exit-node --accept-dns=true 
