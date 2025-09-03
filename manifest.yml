@@ -9,10 +9,7 @@ author: tailscale
 application:
     subdomain: tailscale
     background_task: true
-    multi_instance: false
-    gpu_accel: false
-    kvm_accel: false
-    usb_accel: false
+
     public_path:
         - /
 
