@@ -1,0 +1,12 @@
+params:
+    - id: ts_extra_args
+      type: string
+      name: "tailscale extra args"
+      default_value: "--accept-routes --accept-dns=true"
+      description: "the extra arguments passed to tailscale,see https://tailscale.com/kb/1080/cli"
+
+locales:
+    zh:
+        ts_extra_args:
+            name: "tailscale 额外参数"
+            description: "tailscale 额外参数,参考https://tailscale.com/kb/1080/cli"

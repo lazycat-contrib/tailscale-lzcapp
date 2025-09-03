@@ -7,9 +7,9 @@ echo $! > /tmp/tailscale/tailscaled.pid
 sleep 5
 if [ -e /tmp/tailscale/tailscaled.pid ]; then
     PID=$(cat /tmp/tailscale/tailscaled.pid)
-    echo "tailscaled (pid:$PID) is up ,apply options"
-    tailscale set --accept-routes 
+    echo "tailscaled (pid:$PID) is up ,apply options $TS_EXTRA_ARGS"
+    tailscale set $TS_EXTRA_ARGS
     echo "Web client enabled..."
     tailscale web --listen=0.0.0.0:59527
-    echo "tailscale is ready"  
+    echo "tailscale is ready"
 fi
