@@ -1,41 +1,41 @@
 lzc-sdk-version: "0.1"
 name: Tailscale
 package: cloud.lazycat.app.tailscale
-version: 1.86.5
+version: 1.88.3
 min_os_version: 1.3.8
 description: 将您的设备和用户连接到您专属的安全虚拟专用网络。
 homepage: https://tailscale.com
 author: tailscale
 application:
-    subdomain: tailscale
-    background_task: true
+  subdomain: tailscale
+  background_task: true
 
-    public_path:
-        - /
+  public_path:
+    - /
 
-    upstreams:
-        - location: /
-          backend: http://host.lzcapp:59527
-          remove_this_request_headers:
-              - origin
+  upstreams:
+    - location: /
+      backend: http://host.lzcapp:59527
+      remove_this_request_headers:
+        - origin
 
 services:
-    tailscale:
-        container_name: tailscale
-        # tailscale/tailscale:v1.86.5
-        image: registry.lazycat.cloud/czyt/tailscale/tailscale:f1ba43cfdf73ed21
-        environment:
-            - TS_STATE_DIR=/var/lib/tailscale
-            - TS_EXTRA_ARGS={{ .U.ts_extra_args }}
-            - TS_USERSPACE=false
-        entrypoint: ""
-        command: /lzcapp/pkg/content/run.sh
-        binds:
-            - /lzcapp/var/data:/var/lib
-        network_mode: host
-        net_admin: true
-        healthcheck:
-            test:
-                - CMD-SHELL
-                - tailscale status --peers=false --json | grep -q 'Online.*true'
-            start_period: 90s
+  tailscale:
+    container_name: tailscale
+    # tailscale/tailscale:v1.88.3
+    image: registry.lazycat.cloud/czyt/tailscale/tailscale:026aa34d44f9757e
+    environment:
+      - TS_STATE_DIR=/var/lib/tailscale
+      - TS_EXTRA_ARGS={{ .U.ts_extra_args }}
+      - TS_USERSPACE=false
+    entrypoint: ""
+    command: /lzcapp/pkg/content/run.sh
+    binds:
+      - /lzcapp/var/data:/var/lib
+    network_mode: host
+    net_admin: true
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - tailscale status --peers=false --json | grep -q 'Online.*true'
+      start_period: 90s
