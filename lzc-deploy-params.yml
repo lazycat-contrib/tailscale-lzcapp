@@ -14,7 +14,6 @@ params:
   - id: ts_hostname
     type: string
     name: "tailscale hostname"
-    default_value: "{{ .S.BoxName }}"
     description: "the hostname for tailscale"
     optional: true
 

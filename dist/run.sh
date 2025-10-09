@@ -10,10 +10,11 @@ sleep 5
 if [ -e /tmp/tailscale/tailscaled.pid ]; then
     PID=$(cat /tmp/tailscale/tailscaled.pid)
     echo "tailscaled (pid:$PID) is up"
+    echo "ts auth key：$TS_AUTH_KEY"
     # if auth key provided, join the network
-    if [ -n "$TS_AUTHKEY" ]; then
+    if [ -n "$TS_AUTH_KEY" ]; then
         echo "Authenticating with auth key..."
-        tailscale up --authkey=$TS_AUTHKEY ${TS_HOSTNAME:+--hostname=$TS_HOSTNAME} --accept-dns=false
+        tailscale up --authkey=$TS_AUTH_KEY ${TS_HOSTNAME:+--hostname=$TS_HOSTNAME}
     fi
 
     # apply other configurations
