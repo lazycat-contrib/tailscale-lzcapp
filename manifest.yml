@@ -16,8 +16,6 @@ application:
   upstreams:
     - location: /
       backend: http://host.lzcapp:59527
-      remove_this_request_headers:
-        - origin
 
 services:
   tailscale:
@@ -26,8 +24,10 @@ services:
     image: registry.lazycat.cloud/czyt/tailscale/tailscale:026aa34d44f9757e
     environment:
       - TS_STATE_DIR=/var/lib/tailscale
+      - TS_AUTH_KEY={{ .U.ts_auth_key }}
+      - TS_HOSTNAME={{ .U.ts_hostname }}
       - TS_EXTRA_ARGS={{ .U.ts_extra_args }}
-      - TS_USERSPACE=false
+      - TS_USERSPACE=0
     entrypoint: ""
     command: /lzcapp/pkg/content/run.sh
     binds:

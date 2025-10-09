@@ -1,12 +1,31 @@
 params:
-    - id: ts_extra_args
-      type: string
-      name: "tailscale extra args"
-      default_value: "--accept-routes --accept-dns=true"
-      description: "the extra arguments passed to tailscale,see https://tailscale.com/kb/1080/cli"
+  - id: ts_extra_args
+    type: string
+    name: "tailscale extra args"
+    default_value: "--accept-routes --accept-dns=true"
+    description: "the extra arguments passed to tailscale,see https://tailscale.com/kb/1080/cli"
+
+  - id: ts_auth_key
+    type: string
+    name: "tailscale auth key"
+    description: "the auth key for tailscale,see https://tailscale.com/kb/1085/auth-keys/"
+    optional: true
+
+  - id: ts_hostname
+    type: string
+    name: "tailscale hostname"
+    default_value: "{{ .S.BoxName }}"
+    description: "the hostname for tailscale"
+    optional: true
 
 locales:
-    zh:
-        ts_extra_args:
-            name: "tailscale 额外参数"
-            description: "tailscale 额外参数,参考https://tailscale.com/kb/1080/cli"
+  zh:
+    ts_extra_args:
+      name: "tailscale 额外参数"
+      description: "tailscale 额外参数,参考https://tailscale.com/kb/1080/cli"
+    ts_auth_key:
+      name: "tailscale 认证密钥"
+      description: "tailscale 认证密钥,参考https://tailscale.com/kb/1085/auth-keys/"
+    ts_hostname:
+      name: "tailscale 主机名"
+      description: "tailscale 主机名"
