@@ -39,3 +39,11 @@ services:
         - CMD-SHELL
         - tailscale status --peers=false --json | grep -q 'Online.*true'
       start_period: 90s
+
+locales:
+  zh:
+    name: Tailscale
+    description: 安全网络的最佳VPN服务
+  en:
+    name: Tailscale
+    description: " Best VPN Service for Secure Networks"
