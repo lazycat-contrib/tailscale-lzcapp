@@ -40,20 +40,20 @@ icon: ./icon.png
 # 这种情况下，选用 alpine:latest 作为基础镜像，在 dependencies 中添加所需要的开发依赖即可
 # 如果 dependencies 和 build 同时存在，将会优先使用 dependencies
 devshell:
-    routes:
-        - /=file:///lzcapp/pkg/content/
-    dependencies:
-        - unzip
-    # setupscript 每次进入到app container后都会执行的配置脚本
-    # - 可以为脚本的路径地址
-    # - 如果构建命令简单，也可以直接写 sh 的命令
-    # setupscript: export GOPROXY=https://goproxy.cn
+  routes:
+    - /=file:///lzcapp/pkg/content/
+  dependencies:
+    - unzip
+  # setupscript 每次进入到app container后都会执行的配置脚本
+  # - 可以为脚本的路径地址
+  # - 如果构建命令简单，也可以直接写 sh 的命令
+  # setupscript: export GOPROXY=https://goproxy.cn
 
 compose_override:
-    services:
-        tailscale:
-            devices:
-                - /dev/net/tun:/dev/net/tun
-            cap_add:
-                - NET_ADMIN
-                - NET_RAW
+  services:
+    tailscale:
+      devices:
+        - /dev/net/tun:/dev/net/tun
+      cap_add:
+        - NET_ADMIN
+        - NET_RAW
