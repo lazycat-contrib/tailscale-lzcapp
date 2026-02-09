@@ -1,7 +1,7 @@
 lzc-sdk-version: "0.1"
 name: Tailscale
 package: cloud.lazycat.app.tailscale
-version: 1.92.5
+version: 1.94.1
 min_os_version: 1.3.8
 description: 将您的设备和用户连接到您专属的安全虚拟专用网络。
 homepage: https://tailscale.com
@@ -20,8 +20,8 @@ application:
 services:
   tailscale:
     container_name: tailscale
-    # tailscale/tailscale:v1.92.5
-    image: registry.lazycat.cloud/czyt/tailscale/tailscale:a3af291d74381c93
+    # tailscale/tailscale:v1.94.1
+    image: registry.lazycat.cloud/czyt/tailscale/tailscale:4d08701380a23381
     environment:
       - TS_STATE_DIR=/var/lib/tailscale
       - TS_AUTHKEY={{ .U.ts_auth_key }}
