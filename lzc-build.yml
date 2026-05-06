@@ -1,7 +1,7 @@
 # 整个文件中，可以通过 ${var} 的方式，使用 manifest 字段指定的文件定义的值
 
 # manifest: 指定 lpk 包的 manifest.yml 文件路径
-manifest: ./manifest.yml
+manifest: ./lzc-manifest.yml
 
 # contentdir: 指定打包的内容，将会打包到 lpk 中
 contentdir: ./dist

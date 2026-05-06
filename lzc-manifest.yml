@@ -1,11 +1,3 @@
-lzc-sdk-version: "0.1"
-name: Tailscale
-package: cloud.lazycat.app.tailscale
-version: 1.94.2
-min_os_version: 1.3.8
-description: 将您的设备和用户连接到您专属的安全虚拟专用网络。
-homepage: https://tailscale.com
-author: tailscale
 application:
   subdomain: tailscale
   background_task: true
@@ -20,8 +12,8 @@ application:
 services:
   tailscale:
     container_name: tailscale
-    # tailscale/tailscale:v1.94.2
-    image: registry.lazycat.cloud/czyt/tailscale/tailscale:bcf87df58ca087c8
+    # tailscale/tailscale:v1.96.5
+    image: registry.lazycat.cloud/czyt/tailscale/tailscale:26eec1d7a02129ab
     environment:
       - TS_STATE_DIR=/var/lib/tailscale
       - TS_AUTHKEY={{ .U.ts_auth_key }}
@@ -33,17 +25,9 @@ services:
     binds:
       - /lzcapp/var/data:/var/lib
     network_mode: host
-    net_admin: true
+    netadmin: true
     healthcheck:
       test:
         - CMD-SHELL
         - tailscale status --peers=false --json | grep -q 'Online.*true'
       start_period: 90s
-
-locales:
-  zh:
-    name: Tailscale
-    description: 安全网络的最佳VPN服务
-  en:
-    name: Tailscale
-    description: " Best VPN Service for Secure Networks"
