@@ -12,8 +12,8 @@ application:
 services:
   tailscale:
     container_name: tailscale
-    # tailscale/tailscale:v1.96.5
-    image: registry.lazycat.cloud/czyt/tailscale/tailscale:26eec1d7a02129ab
+    # tailscale/tailscale:v1.98.4
+    image: registry.lazycat.cloud/czyt/tailscale/tailscale:2e8ed3cde284e5ff
     environment:
       - TS_STATE_DIR=/var/lib/tailscale
       - TS_AUTHKEY={{ .U.ts_auth_key }}
