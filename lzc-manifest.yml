@@ -1,18 +1,16 @@
 application:
   subdomain: tailscale
   background_task: true
-
   public_path:
     - /
-
   upstreams:
     - location: /
       backend: http://host.lzcapp:59527
-
 services:
   tailscale:
     # tailscale/tailscale:v1.98.4
-    image: registry.lazycat.cloud/czyt/tailscale/tailscale:2e8ed3cde284e5ff
+    # upstream: docker.io/tailscale/tailscale:v1.98.8
+    image: registry.lazycat.cloud/czyt/tailscale/tailscale:fbd782e014583248
     environment:
       - TS_STATE_DIR=/var/lib/tailscale
       - TS_AUTHKEY={{ .U.ts_auth_key }}
