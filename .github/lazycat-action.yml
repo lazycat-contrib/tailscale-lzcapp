@@ -4,7 +4,7 @@ project:
   root: .
   build_config: lzc-build.yml
   package_file: package.yml
-  output: dist/tailscale.lpk
+  output: .lazycat-build/tailscale.lpk
 
 update:
   strategy: publish
