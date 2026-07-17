@@ -1,5 +1,5 @@
 package: cloud.lazycat.app.tailscale
-version: 1.98.8
+version: 1.98.9
 name: Tailscale
 description: 将您的设备和用户连接到您专属的安全虚拟专用网络。
 min_os_version: 1.5.0
