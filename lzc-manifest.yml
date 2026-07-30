@@ -9,8 +9,8 @@ application:
 services:
   tailscale:
     # tailscale/tailscale:v1.98.4
-    # upstream: docker.io/tailscale/tailscale:v1.98.9
-    image: registry.lazycat.cloud/czyt/tailscale/tailscale:730dfb3a2c133156
+    # upstream: docker.io/tailscale/tailscale:v1.98.10
+    image: registry.lazycat.cloud/czyt/tailscale/tailscale:67f82cfe9e02b31c
     environment:
       - TS_STATE_DIR=/var/lib/tailscale
       - TS_AUTHKEY={{ .U.ts_auth_key }}
