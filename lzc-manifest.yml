@@ -5,7 +5,7 @@ application:
     - /
   upstreams:
     - location: /
-      backend: http://host.lzcapp:59527
+      backend: http://host.lzcapp:59527/
 services:
   tailscale:
     # tailscale/tailscale:v1.98.4

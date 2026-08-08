@@ -17,6 +17,12 @@ If you change this value after the node has already joined a network, remove the
 
 When the LazyCat optional field is left empty, the container environment may show `<no value>`; the startup script treats that as empty and does not pass a custom login server to Tailscale.
 
+## Web Login And Management
+
+When no auth key is configured and the node has not joined a network, open the Web UI through the LazyCat application domain. The login button opens the Tailscale or Headscale authentication page. After authentication, the node state is persisted in the application data directory and survives restarts.
+
+When an auth key is supplied during installation, the app joins the network automatically and does not show the first-login flow. The management action may then open `http://<Tailscale-IP>:5252/?check=now`. This is Tailscale's built-in management address inside the tailnet. It is reachable only from a device already connected to the same tailnet; it is not a public address or a `host.lzcapp` address.
+
 ## Headscale Example
 
 If your Headscale server is published at:

@@ -63,6 +63,6 @@ if [ -e /tmp/tailscale/tailscaled.pid ]; then
 
     # start web ui
     echo "Web client enabled, serving at https://$LAZYCAT_APP_DOMAIN..."
-    tailscale --socket="$TS_SOCKET" web --listen=0.0.0.0:59527 --origin=https://$LAZYCAT_APP_DOMAIN
+    tailscale --socket="$TS_SOCKET" web --listen=0.0.0.0:59527 --origin="$LAZYCAT_APP_DOMAIN"
     echo "tailscale is ready"
 fi
