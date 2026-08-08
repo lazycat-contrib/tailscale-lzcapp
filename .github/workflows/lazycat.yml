@@ -5,9 +5,12 @@ on:
     paths:
       - .github/lazycat-action.yml
       - .github/workflows/lazycat.yml
+      - content/**
       - lzc-build.yml
+      - lzc-deploy-params.yml
       - lzc-manifest.yml
       - package.yml
+      - README*.md
   schedule:
     # 23:00 Asia/Shanghai (UTC+8)
     - cron: "0 15 * * *"

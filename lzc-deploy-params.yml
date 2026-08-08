@@ -3,12 +3,18 @@ params:
     type: string
     name: "tailscale extra args"
     default_value: "--accept-routes --accept-dns=true"
-    description: "the extra arguments passed to tailscale,see https://tailscale.com/kb/1080/cli"
+    description: "extra arguments passed to tailscale up, for example --accept-routes --accept-dns=true. See https://tailscale.com/kb/1080/cli"
 
   - id: ts_auth_key
     type: string
     name: "tailscale auth key"
     description: "the auth key for tailscale,see https://tailscale.com/kb/1085/auth-keys/"
+    optional: true
+
+  - id: ts_login_server
+    type: string
+    name: "tailscale login server"
+    description: "optional custom control server URL, for example https://headscale.example.com. Leave empty to use Tailscale SaaS."
     optional: true
 
   - id: ts_hostname
@@ -22,10 +28,13 @@ locales:
   zh:
     ts_extra_args:
       name: "tailscale 额外参数"
-      description: "tailscale 额外参数,参考https://tailscale.com/kb/1080/cli"
+      description: "传给 tailscale up 的额外参数，例如 --accept-routes --accept-dns=true。参考 https://tailscale.com/kb/1080/cli"
     ts_auth_key:
       name: "tailscale 认证密钥"
       description: "tailscale 认证密钥,参考https://tailscale.com/kb/1085/auth-keys/"
+    ts_login_server:
+      name: "tailscale 登录服务器"
+      description: "可选的自定义控制服务器 URL，例如 https://headscale.example.com。留空则使用 Tailscale 官方服务。"
     ts_hostname:
       name: "tailscale 主机名"
       description: "tailscale 主机名"

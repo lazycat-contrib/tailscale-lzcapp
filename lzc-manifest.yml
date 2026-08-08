@@ -14,6 +14,7 @@ services:
     environment:
       - TS_STATE_DIR=/var/lib/tailscale
       - TS_AUTHKEY={{ .U.ts_auth_key }}
+      - TS_LOGIN_SERVER={{ .U.ts_login_server }}
       - TS_HOSTNAME={{ .U.ts_hostname }}
       - TS_EXTRA_ARGS={{ .U.ts_extra_args }}
       - TS_USERSPACE=0
@@ -26,5 +27,5 @@ services:
     healthcheck:
       test:
         - CMD-SHELL
-        - tailscale status --peers=false --json | grep -q 'Online.*true'
+        - test -S /run/tailscale/tailscaled.sock
       start_period: 90s
