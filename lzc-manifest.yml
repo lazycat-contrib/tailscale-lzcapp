@@ -10,7 +10,7 @@ services:
   tailscale:
     # tailscale/tailscale:v1.98.4
     # upstream: docker.io/tailscale/tailscale:v1.102.2
-    image: registry.lazycat.cloud/czyt/tailscale/tailscale:740d04bddfb14483
+    image: docker.1ms.run/tailscale/tailscale:v1.102.2
     environment:
       - TS_STATE_DIR=/var/lib/tailscale
       - TS_AUTHKEY={{ .U.ts_auth_key }}

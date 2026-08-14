@@ -1,4 +1,4 @@
-name: Publish LazyCat application
+name: Publish to MiaoMiao Store
 
 on:
   pull_request:
@@ -29,7 +29,6 @@ jobs:
       dry-run: ${{ github.event_name == 'pull_request' }}
       versioned-release-asset: true
     secrets:
-      LZC_API_TOKEN: ${{ secrets.LZC_API_TOKEN }}
       APPSTORE_URL: ${{ secrets.APPSTORE_URL }}
       APPSTORE_TOKEN: ${{ secrets.APPSTORE_TOKEN }}
       PRIVATE_STORE_GROUP_CODES: ${{ secrets.PRIVATE_STORE_GROUP_CODES }}
